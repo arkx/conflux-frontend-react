@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { util } from 'js-conflux-sdk'
+import { Drip } from 'js-conflux-sdk' //util, 
 
 import conflux from '../lib/conflux'
 import confluxPortal from '../lib/conflux-portal'
@@ -25,12 +25,19 @@ export default class ConfluxPortal extends PureComponent {
   }
 
   refreshBalance = async () => {
+    // console.log("balance1: ")
     if (!this.state.account) {
       return
     }
+    // console.log("balance2: ")
     this.setState({ balance: '' })
+    // console.log("balance3: ")
     const balance = await conflux.getBalance(this.state.account)
-    this.setState({ balance: util.unit.fromDripToCFX(balance) })
+    // console.log("balance4: ", balance)
+    // console.log(balance); // "4999998839889983249999999950307784"
+    // console.log(Drip(balance).toGDrip()); // "4999998839889983249999999.950307784"
+    // console.log(Drip(balance).toCFX()); // "4999998839889983.249999999950307784"
+    this.setState({ balance: Drip(balance).toCFX() })
   }
 
   renderPortalButton = () => {
@@ -74,7 +81,7 @@ export default class ConfluxPortal extends PureComponent {
     return null
   }
 
-  render () {
+  render() {
     return (
       <div className="card">
         <div className="card-body">

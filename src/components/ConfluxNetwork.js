@@ -10,6 +10,7 @@ export default class ConfluxNetwork extends PureComponent {
           <h5 className="card-title">Conflux Frontend</h5>
           <p className="card-text">This is a demo frontend project for Conflux.</p>
           <p className="card-text">Node URL: <code>{process.env.REACT_APP_CONFLUX_NODE_RPC}</code></p>
+          <p className="card-text">Chain Id: <code>{process.env.REACT_APP_CONFLUX_NODE_NETWORKID}</code></p>
         </div>
       </div>
     )

@@ -5,13 +5,14 @@ import abiSponsorWhitelistControl from './abi/SponsorWhitelistControl.json'
 
 const conflux = new Conflux({
   url: process.env.REACT_APP_CONFLUX_NODE_RPC,
+  networkId: Number(process.env.REACT_APP_CONFLUX_NODE_NETWORKID),
   defaultGasPrice: 100, // The default gas price of your following transactions
   defaultGas: 1000000, // The default gas of your following transactions
   logger: console,
 })
 
 export const ContractCoin = {
-  name: 'Coin',
+  name: 'SponsoredCoin',
   abi: abiCoin,
   contract: conflux.Contract({
     abi: abiCoin,
